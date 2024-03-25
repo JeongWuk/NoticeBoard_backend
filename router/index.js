@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const myModel = require("../models/index");
 
-router.post("/board/write", async (req, res) => {
+router.post("/board/create", async (req, res) => {
   try {
     const requestData = req.body;
     const result = await myModel.createBoardData(requestData);
