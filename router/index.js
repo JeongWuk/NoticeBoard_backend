@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const myModel = require("../models/index");
 
+router.use(express.json());
+
 router.post("/board/create", async (req, res) => {
   try {
     const requestData = req.body;
