@@ -4,6 +4,19 @@ const myModel = require("../models/index");
 
 router.use(express.json());
 
+router.get("/", async (req, res) => {
+  try {
+    const result = await myModel.selectBoardData();
+
+    res
+      .status(200)
+      .json({ message: "Data selected successfully", data: result });
+  } catch (error) {
+    console.error("Error selecting data:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 router.post("/board/create", async (req, res) => {
   try {
     const requestData = req.body;
