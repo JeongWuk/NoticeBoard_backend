@@ -4,7 +4,7 @@ const myModel = require("../models/index");
 
 router.use(express.json());
 
-router.get("/", async (req, res) => {
+router.get("/board/list", async (req, res) => {
   try {
     const result = await myModel.selectBoardData();
 
