@@ -6,7 +6,20 @@ router.use(express.json());
 
 router.get("/board/list", async (req, res) => {
   try {
-    const result = await myModel.selectBoardData();
+    const result = await myModel.getBoardData();
+
+    res
+      .status(200)
+      .json({ message: "Data selected successfully", data: result });
+  } catch (error) {
+    console.error("Error selecting data:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+router.get("/board/:id", async (req, res) => {
+  try {
+    const result = await myModel.getBoardItemData(req.params.id);
 
     res
       .status(200)

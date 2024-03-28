@@ -30,9 +30,31 @@ const myModel = {
     }
   },
 
-  selectBoardData: async () => {
+  getBoardData: async () => {
     try {
       const query = "SELECT * FROM board";
+
+      const result = await new Promise((resolve, reject) => {
+        db.query(query, (error, result) => {
+          if (error) {
+            console.error("Error selecting data:", error);
+            reject(error);
+          } else {
+            resolve(result);
+          }
+        });
+      });
+
+      return result;
+    } catch (error) {
+      console.error("Error selecting data:", error);
+      throw new Error("Error selecting data");
+    }
+  },
+
+  getBoardItemData: async (id) => {
+    try {
+      const query = `SELECT * FROM board WHERE idx = ${id}`;
 
       const result = await new Promise((resolve, reject) => {
         db.query(query, (error, result) => {
