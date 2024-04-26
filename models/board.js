@@ -1,6 +1,6 @@
 const db = require("../lib/db");
 
-const myModel = {
+const myBoardModel = {
   createBoardData: async (requestData) => {
     try {
       const query =
@@ -75,4 +75,4 @@ const myModel = {
   },
 };
 
-module.exports = myModel;
+module.exports = myBoardModel;
